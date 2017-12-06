@@ -83,6 +83,9 @@ public class Medico {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "Medico{" + "id=" + id + ", nome=" + nome + ", crm=" + crm + ", rg=" + rg + ", area=" + area + ", login=" + login + ", senha=" + senha + '}';
+    }
 }

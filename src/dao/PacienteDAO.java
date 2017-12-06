@@ -9,14 +9,42 @@ import classes.Paciente;
 import database.ConexaoMysql;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author João Batista
- */
 public class PacienteDAO {
+    
+    public Paciente buscar(String campo, String valor) {
+        
+        String sql = "SELECT * from pacientes where " + campo + " = ?";
+        PreparedStatement preparador = null;
+        ResultSet result = null;
+        Connection conexao = ConexaoMysql.getConexao();
+        Paciente paciente = null;
+        
+        try {
+            
+            preparador = conexao.prepareStatement(sql);
+            preparador.setString(1, valor);
+            result = preparador.executeQuery();
+            
+            while(result.next())
+            {
+                paciente = new Paciente(result.getInt("id"), result.getString("nome"), result.getString("rg"), result.getString("sus"));
+                
+            }
+            
+        } catch (Exception e) {
+            
+            System.out.print(e.getMessage());
+            
+        } finally {
+            return paciente;
+        }
+     
+    }
+    
     public void salvar(Paciente paciente) {
         Connection conexao = ConexaoMysql.getConexao();
 

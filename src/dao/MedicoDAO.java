@@ -6,9 +6,11 @@
 package dao;
 
 import classes.Medico;
+import classes.Paciente;
 import database.ConexaoMysql;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,7 +21,37 @@ import javax.swing.JOptionPane;
  * @author João Batista
  */
 public class MedicoDAO {
-
+    
+    private String table_name = "medicos";
+    
+    public Medico buscar(String campo, String valor) {
+        
+        String sql = "SELECT * from " + this.table_name + " where " + campo + " = ?";
+        PreparedStatement preparador = null;
+        ResultSet result = null;
+        Connection conexao = ConexaoMysql.getConexao();
+        Medico medico = null;
+        
+        try {
+            
+            preparador = conexao.prepareStatement(sql);
+            preparador.setString(1, valor);
+            result = preparador.executeQuery();
+            
+            while(result.next())
+            {
+                medico = new Medico(result.getInt("id"), result.getString("nome"), result.getString("crm"), result.getString("rg"),result.getString("area"), result.getString("login"), result.getString("senha"));
+            }
+            
+        } catch (Exception e) {
+            
+            System.out.print(e.getMessage());
+            
+        } finally {
+            return medico;
+        }
+     
+    }
     public void salvar(Medico medico) {
         Connection conexao = ConexaoMysql.getConexao();
 
