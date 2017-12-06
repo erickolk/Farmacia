@@ -52,4 +52,9 @@ public class Paciente {
         this.sus = sus;
     }
 
+    @Override
+    public String toString() {
+        return "Paciente{" + "id=" + id + ", nome=" + nome + ", rg=" + rg + ", sus=" + sus + '}';
+    }
+ 
 }
