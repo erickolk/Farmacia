@@ -5,10 +5,16 @@
  */
 package dao;
 
+import classes.Receita;
+
 /**
  *
  * @author João Batista
  */
 public class ReceitaDAO {
+
+    public void salvar(Receita receita) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

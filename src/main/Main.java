@@ -5,10 +5,12 @@ import dao.MedicoDAO;
 import database.ConexaoMysql;
 import java.sql.Connection;
 import telas.GraficoReceita;
-import telas.GraficoMenu;
+
 import javax.swing.JFrame;
 import telas.JanelaFarmaceuticoCriar;
 import telas.JanelaPacienteCriar;
+import telas.JanelaReceitaCriar;
+import telas.MenuInicial;
 
 public class Main {
 
@@ -18,8 +20,8 @@ public class Main {
 
 //        JanelaFarmaceuticoCriar janelafarmaceutico = new JanelaFarmaceuticoCriar();
 //        janelafarmaceutico.setVisible(true);
-        JanelaPacienteCriar janelapaciente = new JanelaPacienteCriar();
-        janelapaciente.setVisible(true);
+        MenuInicial janelareceita = new MenuInicial();
+        janelareceita.setVisible(true);
     }
 
 }

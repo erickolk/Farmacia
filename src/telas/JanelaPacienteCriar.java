@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package telas;
 
 import classes.Farmaceutico;
@@ -11,10 +7,8 @@ import dao.FarmaceuticoDAO;
 import dao.PacienteDAO;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author João Batista
- */
+
+
 public class JanelaPacienteCriar extends javax.swing.JFrame {
 
     /**
@@ -66,7 +60,7 @@ public class JanelaPacienteCriar extends javax.swing.JFrame {
         jButton1.setText("Salvar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SalvarFarmaceutico(evt);
+                SalvarPaciente(evt);
             }
         });
 
@@ -139,9 +133,9 @@ public class JanelaPacienteCriar extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tfnomeActionPerformed
 
-    private void SalvarFarmaceutico(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvarFarmaceutico
+    private void SalvarPaciente(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvarPaciente
 
-        if (tfsus.getText().length() != 10 || tfrg.getText().length() != 8 || !tfsus.getText().matches("[0-9]") || !tfrg.getText().matches("[0-9]")) {
+        if (tfsus.getText().length() != 10 || tfrg.getText().length() != 8) {
             JOptionPane.showMessageDialog(null, "Sus ou Rg incorreto!");
             tfrg.setText("");
             tfsus.setText("");
@@ -164,7 +158,7 @@ public class JanelaPacienteCriar extends javax.swing.JFrame {
         
 
 
-    }//GEN-LAST:event_SalvarFarmaceutico
+    }//GEN-LAST:event_SalvarPaciente
 
     /**
      * @param args the command line arguments

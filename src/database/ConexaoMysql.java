@@ -21,7 +21,7 @@ public class ConexaoMysql {
     private static String DRIVE = "com.mysql.jdbc.Driver";
     private static String URL = "jdbc:mysql://localhost:3306/farmacia";
     private static String USUARIO = "root";
-    private static String SENHA =  "";
+    private static String SENHA =  "415263";
     
     public static Connection getConexao()
     {
