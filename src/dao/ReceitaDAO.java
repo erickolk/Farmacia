@@ -7,10 +7,6 @@ package dao;
 
 import classes.Receita;
 
-/**
- *
- * @author João Batista
- */
 public class ReceitaDAO {
 
     public void salvar(Receita receita) {

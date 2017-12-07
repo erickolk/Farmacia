@@ -2,6 +2,8 @@ package main;
 
 import classes.Medico;
 import classes.Paciente;
+import controllers.LoginFarmaceuticoController;
+import controllers.LoginMedicoController;
 import dao.MedicoDAO;
 import dao.PacienteDAO;
 import database.ConexaoMysql;
@@ -10,6 +12,7 @@ import telas.GraficoReceita;
 
 import javax.swing.JFrame;
 import telas.JanelaFarmaceuticoCriar;
+import telas.JanelaMenuEntrar;
 import telas.JanelaPacienteCriar;
 import telas.JanelaReceitaCriar;
 import telas.MenuInicial;
@@ -17,19 +20,20 @@ import telas.MenuInicial;
 public class Main {
 
     public static void main(String[] args) {
-
-//        JanelaPacienteCriar janelapaciente = new JanelaPacienteCriar();
-//        janelapaciente.setVisible(true);
-
         
-        PacienteDAO pdao = new PacienteDAO();
-        Paciente paciente = pdao.buscar("rg", "16272443");
+        JanelaMenuEntrar jme = new JanelaMenuEntrar();
+        jme.setVisible(true);
         
-        MedicoDAO mdao = new MedicoDAO();
-        Medico medico = mdao.buscar("login", "medico");
+        String login = "jose";
+        String senha = "1234";
+        LoginFarmaceuticoController lmc = new LoginFarmaceuticoController();
         
-        System.out.println(medico);
-        System.out.println(paciente);
+        if(lmc.autenticar(login, senha) !=  null) {
+            System.out.println("Autenticado com sucesso!");
+        }
+        else {
+            System.out.println("Credenciais invalidas!");
+        }
 
     }
 

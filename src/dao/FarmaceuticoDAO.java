@@ -9,6 +9,7 @@ import classes.Farmaceutico;
 import database.ConexaoMysql;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
@@ -17,6 +18,38 @@ import javax.swing.JOptionPane;
  * @author João Batista
  */
 public class FarmaceuticoDAO {
+    
+    private String table_name = "farmaceuticos";
+    
+    public Farmaceutico buscar(String campo, String valor) {
+        
+        String sql = "SELECT * from " + this.table_name + " where " + campo + " = ?";
+        PreparedStatement preparador = null;
+        ResultSet result = null;
+        Connection conexao = ConexaoMysql.getConexao();
+        Farmaceutico farmaceutico = null;
+        
+        try {
+            
+            preparador = conexao.prepareStatement(sql);
+            preparador.setString(1, valor);
+            result = preparador.executeQuery();
+            
+            while(result.next())
+            {
+                farmaceutico = new Farmaceutico(result.getInt("id"), result.getString("login"), result.getString("senha"), result.getString("nome"), result.getString("rg"));
+            }
+            
+        } catch (Exception e) {
+            
+            System.out.print(e.getMessage());
+            
+        } finally {
+            return farmaceutico;
+        }
+     
+    }
+    
     public void salvar(Farmaceutico farmaceutico) {
         Connection conexao = ConexaoMysql.getConexao();
 

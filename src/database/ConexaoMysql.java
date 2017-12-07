@@ -21,7 +21,7 @@ public class ConexaoMysql {
     private static String DRIVE = "com.mysql.jdbc.Driver";
     private static String URL = "jdbc:mysql://localhost:3306/farmacia";
     private static String USUARIO = "root";
-    private static String SENHA =  "415263";
+    private static String SENHA =  "";
     
     public static Connection getConexao()
     {
@@ -30,7 +30,6 @@ public class ConexaoMysql {
         try {
             Class.forName(DRIVE);
             conexao = DriverManager.getConnection(URL, USUARIO, SENHA);
-            System.out.println("Conectado com sucesso!");
         } catch (SQLException | ClassNotFoundException ex) {
              Logger.getLogger(ConexaoMysql.class.getName()).log(Level.SEVERE, null, ex);
         }

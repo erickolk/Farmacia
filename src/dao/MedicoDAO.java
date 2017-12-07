@@ -52,6 +52,8 @@ public class MedicoDAO {
         }
      
     }
+    
+    
     public void salvar(Medico medico) {
         Connection conexao = ConexaoMysql.getConexao();
 

@@ -5,7 +5,10 @@
  */
 package telas;
 
+import controllers.LoginFarmaceuticoController;
+import controllers.LoginMedicoController;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -31,13 +34,15 @@ public class JanelaMenuEntrar extends javax.swing.JFrame {
 
         jLabel2 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
+        opcao_login = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        login = new javax.swing.JTextField();
+        senha = new javax.swing.JPasswordField();
+        ckb_medico = new javax.swing.JRadioButton();
+        ckb_farmaceutico = new javax.swing.JRadioButton();
 
         jLabel2.setText("jLabel2");
 
@@ -49,49 +54,54 @@ public class JanelaMenuEntrar extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(0, 0, 255));
         jLabel1.setText("Sistema de Gerência de Farmacia - Entrar");
 
-        jButton1.setText("Farmaceutico");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jButton2.setText("Médico");
+        jButton2.setText("Entrar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                logar(evt);
             }
         });
 
-        jLabel3.setText("ID :");
+        jLabel3.setText("Login:");
 
         jLabel4.setText("Senha :");
+
+        opcao_login.add(ckb_medico);
+        ckb_medico.setText("Medico");
+
+        opcao_login.add(ckb_farmaceutico);
+        ckb_farmaceutico.setSelected(true);
+        ckb_farmaceutico.setText("Farmaceutico");
+        ckb_farmaceutico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ckb_farmaceuticoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(118, 118, 118)
+                .addComponent(jLabel1)
+                .addContainerGap(92, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                    .addComponent(jPasswordField1))
-                .addGap(218, 218, 218))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(118, 118, 118)
-                        .addComponent(jLabel1))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(login, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                            .addComponent(senha)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(110, 110, 110)
-                        .addComponent(jButton2)
-                        .addGap(43, 43, 43)
-                        .addComponent(jButton1)))
-                .addContainerGap(92, Short.MAX_VALUE))
+                        .addComponent(ckb_medico)
+                        .addGap(51, 51, 51)
+                        .addComponent(ckb_farmaceutico)))
+                .addGap(170, 170, 170))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -100,37 +110,53 @@ public class JanelaMenuEntrar extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addGap(55, 55, 55)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
+                    .addComponent(ckb_medico)
+                    .addComponent(ckb_farmaceutico))
+                .addGap(14, 14, 14)
+                .addComponent(jButton2)
                 .addGap(92, 92, 92))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        JanelaCriarVerificar frame = new JanelaCriarVerificar();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    private void logar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logar
 
-        frame.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+        if (ckb_medico.isSelected() == true) {
+            LoginMedicoController lmc = new LoginMedicoController();
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        JanelaCriarVerificar frame = new JanelaCriarVerificar();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            if (lmc.autenticar(login.getText(), senha.getText()) != null) {
+                JOptionPane.showMessageDialog(null, "Autenticado com sucesso!");
+                
+                JanelaMedicoIniciar jmi = new JanelaMedicoIniciar();
+                jmi.setVisible(true);
+                dispose();
+                
+            } else {
+                JOptionPane.showMessageDialog(null, "Médico com Credenciais invalidas!");
+            }
+        } else if (ckb_farmaceutico.isSelected() == true) {
+            LoginFarmaceuticoController lfmc = new LoginFarmaceuticoController();
+            
+            if (lfmc.autenticar(login.getText(), senha.getText()) != null) {
+                JOptionPane.showMessageDialog(null, "Farmaceutico Autenticado com sucesso!");
+            } else {
+                JOptionPane.showMessageDialog(null, "Farmaceutico com Credenciais invalidas!");
+            }
+        }
+    }//GEN-LAST:event_logar
 
-        frame.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void ckb_farmaceuticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckb_farmaceuticoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ckb_farmaceuticoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -168,14 +194,16 @@ public class JanelaMenuEntrar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JRadioButton ckb_farmaceutico;
+    private javax.swing.JRadioButton ckb_medico;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField login;
+    private javax.swing.ButtonGroup opcao_login;
+    private javax.swing.JPasswordField senha;
     // End of variables declaration//GEN-END:variables
 }
