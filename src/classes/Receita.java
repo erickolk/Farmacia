@@ -1,5 +1,6 @@
 package classes;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Receita {
@@ -8,6 +9,7 @@ public class Receita {
     private Date data;
     private Medico medico;
     private Paciente paciente;
+    private ArrayList<ItemRemedio> remedios;
 
     public Receita(Date data, Medico medico, Paciente paciente) {
         this.data = data;

@@ -135,7 +135,7 @@ public class MenuInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        JanelaCriarVerificar frame = new JanelaCriarVerificar();
+        JanelaLogin frame = new JanelaLogin();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         frame.setVisible(true);

@@ -12,7 +12,7 @@ import telas.GraficoReceita;
 
 import javax.swing.JFrame;
 import telas.JanelaFarmaceuticoCriar;
-import telas.JanelaMenuEntrar;
+import telas.JanelaLogin;
 import telas.JanelaPacienteCriar;
 import telas.JanelaReceitaCriar;
 import telas.MenuInicial;
@@ -21,8 +21,8 @@ public class Main {
 
     public static void main(String[] args) {
         
-        JanelaMenuEntrar jme = new JanelaMenuEntrar();
-        jme.setVisible(true);
+        MenuInicial mi = new MenuInicial();
+        mi.setVisible(true);
         
         String login = "jose";
         String senha = "1234";
